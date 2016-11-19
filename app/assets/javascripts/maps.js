@@ -8,7 +8,8 @@ function initMap() {
     zoom: 12
   });
 
-  infoWindow = new google.maps.Marker({map: map});
+  
+  var infoWindow = new google.maps.InfoWindow({map: map});
 
   // Try HTML5 geolocation.
   if (navigator.geolocation) {
@@ -19,8 +20,9 @@ function initMap() {
       };
 
       infoWindow.setPosition(pos);
-      infoWindow.setTitle('Tu ubucación');
+      infoWindow.setContent('Ubicación');
       map.setCenter(pos);
+
     }, function() {
       handleLocationError(true, infoWindow, map.getCenter());
     });
@@ -31,16 +33,13 @@ function initMap() {
 
   var centerControlDiv = document.createElement('div');
   var centerControl = new CenterControl(centerControlDiv, map);
+  
+
 
   centerControlDiv.index = 1;
   map.controls[google.maps.ControlPosition.TOP_CENTER].push(centerControlDiv);
 
   
-  var markermarker = new google.maps.Marker({
-    position: pos,
-    map: map,
-    title: 'Mi ubucación'
-  });
 }
 
 function CenterControl(controlDiv, map) {
